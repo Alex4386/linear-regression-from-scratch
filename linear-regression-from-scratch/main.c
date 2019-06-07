@@ -14,6 +14,9 @@ double currentA = 0;
 double currentB = 0;
 
 int main() {
+    double learningRate = .1f;
+    int learnCount = 0;
+
     printf("Linear Regression Implementation on C\n");
     printf("by Alex4386\n");
     
@@ -27,10 +30,6 @@ int main() {
     }
 
     getInput();
-
-
-    double learningRate = .1f;
-    int learnCount = 0;
 
     printf("\n");
     printf("Learning Rate: ");
@@ -49,16 +48,18 @@ int main() {
 }
 
 int getInput() {
+    int i;
+
     printf("\n");
     printf("inputs: \n");
-    for (int i = 0; i < datasetCount; i++) {
+    for (i = 0; i < datasetCount; i++) {
         printf("index %d: ", i);
         scanf("%lf", &input[i]);
     }
 
     printf("\n");
     printf("outputs:\n");
-    for (int i = 0; i < datasetCount; i++) {
+    for (i = 0; i < datasetCount; i++) {
         printf("index %d: ", i);
         scanf("%lf", &output[i]);
     }
@@ -68,7 +69,8 @@ int getInput() {
 }
 
 int getDataset() {
-    for (int i = 0; i < datasetCount; i++) {
+    int i;
+    for (i = 0; i < datasetCount; i++) {
         if (i != 0) printf(", ");
         printf("( %lf, %lf )", input[i], output[i]);
     }
@@ -88,7 +90,8 @@ double getCurrentSquare(double a, double b, int index) {
 
 double getTotalSM(double a, double b) {
     double total = 0;
-    for (int i = 0; i < datasetCount; i++) {
+    int i;
+    for (i = 0; i < datasetCount; i++) {
         total += getCurrentSquare(a, b, i);
     }
 
@@ -99,13 +102,15 @@ int learn(double learningRate) {
     double a = 0;
     double b = 0;
 
-    for (int i = 0; i < datasetCount; i++) {
+    int i;
+
+    for (i = 0; i < datasetCount; i++) {
         /* derivative of a in (y - (a * input[i] + b))^2 / n */
         a += 1/(double)datasetCount * 2 * (output[i] - (currentA * input[i] + currentB)) * -input[i];
         b += 1/(double)datasetCount * 2 * (output[i] - (currentA * input[i] + currentB)) * -1;
     }
 
-    //printf("Learn Result: %lf, %lf || %lf, %lf\n", a, b, (a * learningRate), (b * learningRate));
+    // printf("Learn Result: %lf, %lf || %lf, %lf\n", a, b, (a * learningRate), (b * learningRate));
     currentA -= (a * learningRate);
     currentB -= (b * learningRate);    
 
@@ -113,11 +118,12 @@ int learn(double learningRate) {
 }
 
 int learningProcess(int learnCount, double learningRate) {
-    for (int i = 0; i < learnCount; i++) {
+    int i;
+
+    for (i = 0; i < learnCount; i++) {
         learn(learningRate);
         printf("Learning: %d/%d: y = %lf x + %lf, Mean-Square Error: %lf\n", i+1, learnCount, currentA, currentB, getTotalSM(currentA, currentB));
     }
 
     return 0;
 }
-

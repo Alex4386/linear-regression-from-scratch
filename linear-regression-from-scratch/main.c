@@ -26,6 +26,7 @@ int main() {
 
         if (datasetCount > datasets) {
             printf("too many datasets, please change the value in source");
+            return 0;
         }
     }
 

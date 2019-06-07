@@ -11,4 +11,4 @@ The code was built via the class materials of 2019-1 Software Mathematics, Chapt
 Because I am program better at C than Python.  
 
 ## LICENSE
-MIT License  
+MIT License (HRPL depending on your case ¯\\_(ツ)_/¯)  

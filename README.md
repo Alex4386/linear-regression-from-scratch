@@ -1,6 +1,6 @@
 # Linear-Regression-From-Scratch
 My Trial of implementing linear regression on C language.  
-Currently trying to implement in [playentry](http://naver.me/xtFaSTVG)  
+Implemented in [playentry](http://naver.me/xtFaSTVG)  
 
 ## What does it do?
 This is a Self-study project of Software Mathematics Course, of [Prof. Jaehyuk Choi](https://sites.google.com/site/chjhsoft/).  
